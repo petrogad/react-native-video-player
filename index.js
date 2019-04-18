@@ -533,7 +533,7 @@ export default class VideoPlayer extends Component {
     />
     </View>
     {((!this.state.isPlaying) || this.state.isControlsVisible)
-      ? this.renderControls() : this.renderSeekBar(true)}
+      ? this.renderControls() : (this.props.hideSeekBarOnPlay ? null : this.renderSeekBar(true))}
   </View>
   );
   }
@@ -584,6 +584,7 @@ VideoPlayer.propTypes = {
   resizeMode: Video.propTypes.resizeMode,
   rewindInSeconds: PropTypes.number,
   hideControlsOnStart: PropTypes.bool,
+  hideSeekBarOnPlay: PropTypes.bool,
   endWithThumbnail: PropTypes.bool,
   disableSeek: PropTypes.bool,
   pauseOnPress: PropTypes.bool,
